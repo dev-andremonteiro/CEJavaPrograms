@@ -1,0 +1,113 @@
+string
+	int
+
+int principal(){
+
+	float graus;
+	float rad;
+	float pi;	
+
+	cin >> graus;
+	
+	pi = 3.1;	
+	rad = graus*pi;
+	rad = rad/180;
+
+	float sum = 0;
+	float sumant = 0;
+	float result = 0;
+	int n = 0;
+	int num = 0; 
+	int pow1 = 1;
+	int pow2 = 1;
+	
+	
+	if(n == 0){
+		pow1 = 1;
+	};
+	while(x < n){
+		pow1 = pow1 * -1;
+		x= x + 1;
+	};
+		
+	if(n == 0){
+		pow2 = 1;
+	};
+	num = 2*n;
+	num = num + 1;
+	while(x < num){
+		pow2 = pow2 * rad;
+		x = x + 1;
+	};
+	
+	int x;
+	fat = 2*n;
+	fat = fat + 1;
+	x = fat;
+	
+	while(x>1){
+
+		x = x - 1;
+		fat = x * fat;	
+
+	};
+  
+	
+	sum = pow2/fat;
+	sum = pow1 * sum;
+	sum = sumant + sum;
+
+	cout << sum;
+
+	while(result > 0.1){
+		n = n + 1;
+		sumant = sum;
+			
+		if(n == 0){
+			 pow1 = 1;
+		};
+		while(x < n){
+			pow1 = pow1 * -1;
+			x = x + 1;
+		};
+			
+		if(n == 0){
+			pow2 = 1;
+		};
+		num = 2*n;
+		num = num + 1;
+		while(x < num){
+			pow2 = pow2 * rad;
+			x = x + 1;
+		};
+		
+		int x;
+		fat = 2*n;
+		fat = fat + 1;
+		x = fat;
+		
+		while(x>1){
+	
+			x = x - 1;
+			fat = x * fat;	
+	
+		};
+  	
+		
+		sum = pow2/fat;
+		sum = pow1 * sum;
+		sum = sumant + sum;
+
+		result = sum - sumant;
+		if( result < 0){
+		
+			result = result * -1;
+		};
+		
+		cout << sum << erro;
+	};
+
+	
+	cout << sum;
+
+}
