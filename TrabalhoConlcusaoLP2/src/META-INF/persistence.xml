@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="trabalhoconclusao" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>vo.Endereco.EstadoVO</class>
+    <class>vo.Endereco.CidadeVO</class>
+    <class>vo.Endereco.BairroVO</class>
+    <class>vo.Pessoa.VendedorVO</class>
+    <class>vo.Pessoa.PessoaVO</class>
+    <class>vo.Pessoa.PessoaJuridicaVO</class>
+    <class>vo.Pessoa.PessoaFisicaVO</class>
+    <class>vo.Pessoa.FornecedorVO</class>
+    <class>vo.Pessoa.ClienteVO</class>
+    <class>vo.Pagamento.BancoVO</class>
+    <class>vo.Pagamento.BandeiraCartaoVO</class>
+    <class>vo.Pagamento.DocumentoCartaoCreditoVO</class>
+    <class>vo.Pagamento.DocumentoPagamentoVO</class>
+    <class>vo.Pagamento.ParcelaPagamentoVO</class>
+    <class>vo.Pagamento.PagamentoVO</class>
+    <class>vo.Pagamento.DocumentoChequeVO</class>
+    <class>vo.Produto.CategoriaVO</class>
+    <class>vo.Produto.ItemCompraVO</class>
+    <class>vo.Produto.ProdutoVO</class>
+    <class>vo.Produto.CompraVO</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/trabalhoconclusao"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="postgre"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
