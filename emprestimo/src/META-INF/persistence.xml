@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence                  http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="UP-POSTGRE" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>vo.AtividadeVO</class>
+    <class>vo.BaixaVO</class>
+    <class>vo.EmprestimoVO</class>
+    <class>vo.FuncaoVO</class>
+    <class>vo.GrupoVO</class>
+    <class>vo.MaterialEmprestimoVO</class>
+    <class>vo.MaterialTipoAtividadeVO</class>
+    <class>vo.MaterialVO</class>
+    <class>vo.PatrulhaVO</class>
+    <class>vo.PessoaVO</class>
+    <class>vo.RamoVO</class>
+    <class>vo.TipoAtividadeVO</class>
+    <class>vo.TipoBaixaVO</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/emprestimo"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <!--"none" ou "create-tables" ou "drop-and-create-tables"-->
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+    </properties>
+  </persistence-unit>
+</persistence>
