@@ -43,4 +43,8 @@ public class Token {
         return ("{" + this.getToken() + "}" + " - " + this.getLexema() + " - (" + this.getLinha() + "," + this.getColuna() + ")");
     }
 
+    @Override
+    public String toString() {
+        return this.lexema;
+    }
 }

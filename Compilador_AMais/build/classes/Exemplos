@@ -1,0 +1,79 @@
+int principal(){
+    string arg;
+    int x;
+    x = 0;
+    cin << arg;
+    
+    while(x < 10){
+        cout >> x >> arg;
+        x = x + 1;        
+    }
+    
+    int x;
+}
+
+
+------------------------------------
+
+
+int principal(){
+
+    teste = "Ola Mundo";
+    int x = 0;
+
+    if(teste == "Ola Mundo"){
+        x = x + 1;
+    }
+    if(teste != "Ola Mundo"){
+        x = x - 1;
+    }
+
+}
+
+
+-------------------------------------
+
+int principal(){
+
+    string teste = "Ola Mundo";
+    int x = 0;
+
+    if(teste == "Ola Mundo"){
+        x = x + 1;
+    }
+    if(teste != "Ola Mundo"){
+        x = x - 1;
+    }
+
+}
+
+
+-------------------------------------
+
+int principal(){
+
+    float graus;
+    float pi;
+    float rad;
+
+    cin << graus;
+    
+    pi = 3.1;   
+    rad = graus*pi;
+    rad = rad/180;
+
+    int pow1;
+    int n;
+    int x;
+
+    if(n == 0){
+        pow1 = 1;
+    }
+    
+    while(x < n){
+        pow1 = pow1 * 1;
+        x = x + 1;
+    }
+    
+    cout >> pow1;
+}

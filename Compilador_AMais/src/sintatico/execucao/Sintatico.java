@@ -5,27 +5,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
 import lexico.conceito.armazenamento.Token;
+import lexico.conceito.processamento.ErroLexico;
 import lexico.conceito.processamento.Lexico;
 import sintatico.armazenamento.Log;
 import sintatico.armazenamento.Node;
 import sintatico.armazenamento.Tree;
 
 public class Sintatico {
-
+    
+    private Lexico lex;
     private String[][] Tabela;
     private String[][] Exprecoes;
     private Log log;
-    private Lexico lex;
-    private Tree<String> tree;
+    private Tree<Token> tree;
     ArrayList<Token> lista_token;
-    int x;
-    Stack pilha;
+    String msgerro = "";
+    
 
-    public Sintatico(String caminho) {
-
+    public Sintatico(String caminho) throws ErroSintatico, ErroLexico {
+        lex = new Lexico(caminho);
         Tabela = new String[36][40];
         Exprecoes = new String[66][2];
-        lex = new Lexico(caminho);
 
         try {
             htmltojava table = new htmltojava("Tabela Sintatica.html", 0);
@@ -42,42 +42,58 @@ public class Sintatico {
         aux_token.setLexema("");
         lista_token = lex.getTokens();
         lista_token.add(aux_token);
-        pilha = new Stack();
         pilha.push("$");
         pilha.push("principal");
-        Node<String> root = new Node<String>("programa_inicio");
-        tree = new Tree<String>(root);
-        log = new Log();
-        this.x = 0;
+        aux_token = new Token();
+        aux_token.setToken("programa_inicio");
+        aux_token.setLexema("programa_inicio");
+        aux_token.setLinha(-1);
+        aux_token.setColuna(-1);
+        Node<Token> root = new Node<Token>(aux_token);
+        tree = new Tree<Token>(root);
+        log = new Log("Sintatico");
         processar(root);
+        if(!(msgerro.isEmpty())){
+            throw new ErroSintatico(msgerro);
+        }
     }
 
-    private void processar(Node<String> pai) {
+    int x = 0;
+    Stack pilha = new Stack();
+    Node<Token> aux_no2 = null;
+
+    private void processar(Node<Token> pai) {
 
         int y = 0;
         String temp[] = null;
-        Node<String> aux_no2 = null;
         String aux = (String) pilha.pop();
         log.setTexto("(PILHA) Desempilhado :" + aux);
-        aux_no2 = new Node<String>(aux);
+        Token aux_token = new Token();
+        aux_token.setToken(aux);
+        aux_token.setLexema(aux);
+        aux_token.setLinha(-1);
+        aux_token.setColuna(-1);
+        aux_no2 = new Node<Token>(aux_token);
         pai.addChild(aux_no2);
         log.setTexto("(ARVORE) Inserido no :" + aux_no2.toString());
         pai = aux_no2;
-        
+           
         
         if (aux.equals((lista_token.get(x)).getToken())) {
-            pai.addChild(new Node<String>("\"" + (lista_token.get(x)).getLexema() + "\""));
+            
+            pai.addChild(new Node<Token> (lista_token.get(x)));
             log.setTexto("(ARVORE) Inserido no :" + (lista_token.get(x)).getLexema());
             if (aux.equals("$")) {
                 return;
             }
             x++;
         } else if (aux.equals("î")) {
+
         } else {
+            
             aux = verificarTabela(aux, (lista_token.get(x).getToken()));
             if (aux.equals("-")) {
-                System.out.println("Arquivo fonte não reconhecido.");
-                System.exit(0);
+                msgerro = " (Linha "+(lista_token.get(x).getLinha()+1)+") Arquivo fonte não reconhecido.\n";
             } else {
                 temp = this.verificarExprecoes(aux);
 
@@ -143,15 +159,13 @@ public class Sintatico {
         return log.getTexto();
     }
 
-    public void imprimirArvore() {
-        //System.out.println("\n");
-        //tree.getPreOrderTraversal();
-        tree.imprimirArvore((tree.getRoot()), 2, 0);
-
+    public String imprimirArvore() {
+        tree.imprimirArvore((tree.getRoot()), 6, 0);
+        return(tree.getSaida());
+        
     }
 
-    public Lexico getLex() {
-        return lex;
+    public Tree<Token> getTree() {
+        return tree;
     }
-
 }

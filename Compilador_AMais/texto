@@ -1,0 +1,18 @@
+int principal(){
+	cout >> "Digite a altura do triangulo:";
+	
+	float altura;
+	cin << altura;
+	
+	cout >> "Digite a base do triangulo:";
+	
+	float base;
+	cin << base;
+	
+	float resultado;
+
+	resultado = base * altura;
+	resultado = resultado/2;
+	
+	cout >> "A area do triangulo eh: " >> resultado;
+}

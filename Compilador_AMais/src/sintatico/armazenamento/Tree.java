@@ -85,16 +85,16 @@ public class Tree<T> {
     }
 
     private void buildPreOrder(Node<T> node, ArrayList<Node<T>> preOrder) {
-        System.out.print(node);
+        //System.out.print(node);
         if (node.getChildren().size() != 0) {
-            System.out.print(" (");
+            //System.out.print(" (");
         }
         preOrder.add(node);
         for (Node<T> child : node.getChildren()) {
             buildPreOrder(child, preOrder);
         }
         if (node.getChildren().size() != 0) {
-            System.out.print(")");
+            //System.out.print(")");
         }
 
     }
@@ -175,7 +175,9 @@ public class Tree<T> {
 
         return saida;
     }
-
+    
+    private String saida = "";
+    
     public void imprimirArvore(Node<T> node, int indentSize, int currentLevel) {
 
         String aux = "";
@@ -184,12 +186,16 @@ public class Tree<T> {
             aux += " ";
             x++;
         }
-        System.out.print(aux);
-        System.out.println(node.toString());
+        saida += (aux);
+        saida += (node.toString()) + "\n";
 
         node.children.stream().forEach((child) -> {
 
             imprimirArvore(child, indentSize, currentLevel + 1);
         });
+    }
+
+    public String getSaida() {
+        return saida;
     }
 }

@@ -1,0 +1,11 @@
+int principal(){
+    string arg;
+    int x = 0;
+
+    cin << arg;
+    
+    while(x < 10) then begin
+        write(x,"sadygas");
+        x = x + 1;   
+    }
+}

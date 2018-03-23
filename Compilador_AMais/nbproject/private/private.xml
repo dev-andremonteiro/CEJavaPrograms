@@ -3,9 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ANDRÉ/Documents/NetBeansProjects/Compilador_AMais/src/Compilador.java</file>
-            <file>file:/C:/Users/ANDRÉ/Documents/NetBeansProjects/Compilador_AMais/src/sintatico/execucao/Sintatico.java</file>
-            <file>file:/C:/Users/ANDRÉ/Documents/NetBeansProjects/Compilador_AMais/src/sintatico/armazenamento/htmltojava.java</file>
+            <file>file:/C:/Users/André/Documents/NetBeansProjects/Compilador_AMais/src/semantico/verificar/Semantico.java</file>
         </group>
     </open-files>
 </project-private>

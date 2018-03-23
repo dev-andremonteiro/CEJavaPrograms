@@ -21,8 +21,10 @@ public class Lexico {
     boolean foi = false;
     boolean passou = false;
     boolean aspas = false;
+    String msgerro = "";
+    
 
-    public Lexico(String caminho) {
+    public Lexico(String caminho) throws ErroLexico {
 
         Leitor lt = new Leitor(caminho);
         String leitura = lt.getEntrada();
@@ -33,6 +35,9 @@ public class Lexico {
         this.processar();
         this.tratar();
         this.getTabelaSimbolo();
+        if(!msgerro.isEmpty()){
+            throw new ErroLexico(msgerro);
+        }
     }
 
     void processar() {
@@ -41,10 +46,12 @@ public class Lexico {
         coluna = 0;
         lexema = "";
         aux_token = new Token();
-
+        
+        
+        
         int aux = 0;
         while (coluna < ver.length) {
-
+            
             if (verificar(Character.toString(ver[coluna]))) {
                 lexema = "";
                 aux_token = new Token();
@@ -73,6 +80,7 @@ public class Lexico {
                 if ((coluna == ver.length - 1)) {
                     lexema = "";
                     aux_token = new Token();
+                    aux_token.setLinha(linha);
                     aux_token.setColuna(aux);
                     while (aux < coluna + 1) {
                         lexema += ver[aux];
@@ -86,7 +94,6 @@ public class Lexico {
                 }
             }
             coluna++;
-
         }
 
         if (aspas) {
@@ -108,7 +115,7 @@ public class Lexico {
             }
             aux_token.setToken("IDENT");
             tokens.add(aux_token);
-            System.out.println("Erro 01 - Falta Aspas  -  Linha: " + aux_token.getLinha());
+            msgerro += ("\nFalta Aspas  -  Linha: " + aux_token.getLinha());
         }
 
         linha++;
@@ -208,7 +215,6 @@ public class Lexico {
         while (x < tokens.size()) {
             boolean pass = false;
             boolean pass3 = false;
-
             aux_token = new Token();
             aux_token = tokens.get(x);
             y = 0;
@@ -325,9 +331,9 @@ public class Lexico {
                 }
                 z++;
             }
-
+            
             if (!pass) {
-
+                boolean passed=true;
                 char[] palavra = aux_token.getLexema().toCharArray();
                 y = 0;
                 if (Character.isDigit(palavra[y])) {
@@ -343,13 +349,13 @@ public class Lexico {
                     }
                     if (y == palavra.length) {
                         aux_token.setToken("INT");
-                        passou = true;
+                        pass = true;
                     } else {
                         aux_token.setToken("CARACTER_INVALIDO");
                     }
                 }
                 y = 0;
-                if (Character.isDigit(palavra[y]) && (!passou)) {
+                if (Character.isDigit(palavra[y]) && (!pass)) {
                     y = 1;
                     while (y < palavra.length) {
                         if (Character.isLetter(palavra[y])) {
@@ -395,7 +401,7 @@ public class Lexico {
             }
 
             if (aux_token.getToken().equals("CARACTER_INVALIDO")) {
-                System.out.println("Erro 02 - Caracter Inválido - " + aux_token.getLinha() + " - " + aux_token.getColuna() + " - " + aux_token.getLexema());
+                msgerro += ("Caracter Inválido - " + aux_token.getLinha() + " - " + aux_token.getColuna() + " - " + aux_token.getLexema());
                 tokens.remove(aux_token);
             }
             x++;

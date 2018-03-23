@@ -2,14 +2,14 @@ package sintatico.armazenamento;
 
 public class Log {
 
-    private String texto;
+    private String texto = "";
 
-    public Log() {
-        texto = "\n\n\n------------------- Log --------------------\n";
+    public Log(String texto) {
+        this.texto = "\n\n\tLog "+texto+"\t\n\n";
     }
 
     public String getTexto() {
-        return (texto + "--------------------------------------------");
+        return (texto);
     }
 
     public void setTexto(String texto) {
